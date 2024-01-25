@@ -73,7 +73,7 @@ namespace Keuangan
                     {
                         try
                         {
-                            string responseData2 = await Connection.GetAuthorizedDataAsync(Connection.getRecordByUserURL(user.Username), user.Token);
+                            string responseData2 = await Connection.GetAuthorizedDataAsync(Connection.getRecordByUserURL(1), user.Token);
 
                             Dictionary<string, object> responseDataDictionary2 = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseData2);
 

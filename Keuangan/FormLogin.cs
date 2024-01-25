@@ -33,6 +33,7 @@ namespace Keuangan
             pictureBox1.Visible = false;
             label4.Visible = false;
             label5.Visible = true;
+            button2.Visible = false;
             try
             {
                 // Create a dictionary to represent the data you want to send in the request body
@@ -76,6 +77,7 @@ namespace Keuangan
             pictureBox1.Visible = true;
             label4.Visible = true;
             label5.Visible = false;
+            button2.Visible = true; 
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -96,6 +98,17 @@ namespace Keuangan
         private void button3_Click(object sender, EventArgs e)
         {
             textBox2.UseSystemPasswordChar = textBox2.UseSystemPasswordChar != true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormSignup formSignup = new FormSignup();
+            formSignup.Closed += (s, args) =>
+            {
+                this.Show();
+            };
+            formSignup.Show();
         }
     }
 }

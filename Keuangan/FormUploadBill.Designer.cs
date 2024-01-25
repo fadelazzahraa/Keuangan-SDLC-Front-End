@@ -30,99 +30,106 @@
 
         private void InitializeComponent()
         {
-            this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.selectImageButton = new System.Windows.Forms.Button();
-            this.uploadButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            this.SuspendLayout();
+            pictureBox = new System.Windows.Forms.PictureBox();
+            selectImageButton = new System.Windows.Forms.Button();
+            uploadButton = new System.Windows.Forms.Button();
+            textBox1 = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
+            SuspendLayout();
             // 
             // pictureBox
             // 
-            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox.Location = new System.Drawing.Point(15, 16);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(302, 303);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
+            pictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            pictureBox.Location = new System.Drawing.Point(17, 18);
+            pictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new System.Drawing.Size(352, 349);
+            pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pictureBox.TabIndex = 0;
+            pictureBox.TabStop = false;
             // 
             // selectImageButton
             // 
-            this.selectImageButton.Location = new System.Drawing.Point(11, 323);
-            this.selectImageButton.Margin = new System.Windows.Forms.Padding(2);
-            this.selectImageButton.Name = "selectImageButton";
-            this.selectImageButton.Size = new System.Drawing.Size(306, 24);
-            this.selectImageButton.TabIndex = 1;
-            this.selectImageButton.Text = "Select Image";
-            this.selectImageButton.UseVisualStyleBackColor = true;
-            this.selectImageButton.Click += new System.EventHandler(this.SelectImageButton_Click);
+            selectImageButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            selectImageButton.Location = new System.Drawing.Point(13, 373);
+            selectImageButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            selectImageButton.Name = "selectImageButton";
+            selectImageButton.Size = new System.Drawing.Size(357, 28);
+            selectImageButton.TabIndex = 1;
+            selectImageButton.Text = "Select Image";
+            selectImageButton.UseVisualStyleBackColor = true;
+            selectImageButton.Click += SelectImageButton_Click;
             // 
             // uploadButton
             // 
-            this.uploadButton.Enabled = false;
-            this.uploadButton.Location = new System.Drawing.Point(11, 425);
-            this.uploadButton.Margin = new System.Windows.Forms.Padding(2);
-            this.uploadButton.Name = "uploadButton";
-            this.uploadButton.Size = new System.Drawing.Size(306, 24);
-            this.uploadButton.TabIndex = 0;
-            this.uploadButton.Text = "Upload Bill";
-            this.uploadButton.UseVisualStyleBackColor = true;
-            this.uploadButton.Click += new System.EventHandler(this.UploadButton_Click);
+            uploadButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            uploadButton.Enabled = false;
+            uploadButton.Location = new System.Drawing.Point(13, 490);
+            uploadButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            uploadButton.Name = "uploadButton";
+            uploadButton.Size = new System.Drawing.Size(357, 28);
+            uploadButton.TabIndex = 0;
+            uploadButton.Text = "Upload Bill";
+            uploadButton.UseVisualStyleBackColor = true;
+            uploadButton.Click += UploadButton_Click;
             // 
             // textBox1
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(52, 352);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(265, 68);
-            this.textBox1.TabIndex = 2;
+            textBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            textBox1.Enabled = false;
+            textBox1.Location = new System.Drawing.Point(61, 406);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(309, 78);
+            textBox1.TabIndex = 2;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 355);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Detail";
+            label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(14, 410);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(37, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Detail";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(133, 381);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Uploading...";
-            this.label2.Visible = false;
+            label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            label2.AutoSize = true;
+            label2.Enabled = false;
+            label2.Location = new System.Drawing.Point(155, 440);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(71, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Uploading...";
+            label2.Visible = false;
             // 
             // FormUploadBill
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 460);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.uploadButton);
-            this.Controls.Add(this.selectImageButton);
-            this.Controls.Add(this.pictureBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximizeBox = false;
-            this.Name = "FormUploadBill";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UploadBill";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(383, 532);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(textBox1);
+            Controls.Add(uploadButton);
+            Controls.Add(selectImageButton);
+            Controls.Add(pictureBox);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            MaximizeBox = false;
+            MinimumSize = new System.Drawing.Size(399, 571);
+            Name = "FormUploadBill";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Upload Bill | CashFlow Tracker";
+            Load += FormUploadBill_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

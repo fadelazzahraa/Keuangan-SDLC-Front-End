@@ -24,9 +24,10 @@ namespace Keuangan
         private User user;
         private BindingList<Record> records;
         private List<List<string>> photos;
+        private Dictionary<string, List<List<string>>> categories;
+        private List<List<string>> categoriesComboBoxList;
         private Record selectedRecord = null;
         private List<User> users;
-        private int defaultUser;
         private int selectedUser;
 
         public FormCashFlow(User loggedinuser)
@@ -41,15 +42,7 @@ namespace Keuangan
             ChangeProgressBarState(true);
             try
             {
-                string responseData = "";
-                if (userId.Equals(-1))
-                {
-                    responseData = await Connection.GetAuthorizedDataAsync(Connection.getRecordByUserURL(user.Username), user.Token);
-                }
-                else
-                {
-                    responseData = await Connection.GetAuthorizedDataAsync(Connection.getRecordByUserURL(users[userId].Username), user.Token);
-                }
+                string responseData = await Connection.GetAuthorizedDataAsync(Connection.getRecordByUserURL(userId), user.Token);
 
                 Dictionary<string, object> responseDataDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseData);
 
@@ -58,15 +51,18 @@ namespace Keuangan
                 foreach (var selectedData in datas)
                 {
                     int id = (int)selectedData["id"];
+                    int actorId = (int)selectedData["actorId"];
                     string transaction = (string)selectedData["transaction"];
                     float value = (float)selectedData["value"];
                     string detail = (string)selectedData["detail"];
                     DateTime date = (DateTime)selectedData["date"];
+                    string tag = (string)selectedData["tag"];
+                    int? categoryRecordId = (int?)selectedData["categoryRecordId"];
                     int? photoRecordId = (int?)selectedData["photoRecordId"];
 
-                    records.Add(new Record(id, transaction, value, detail, date, user.Username, photoRecordId));
+                    records.Add(new Record(id, actorId, transaction, value, detail, date, tag, categoryRecordId, photoRecordId));
                 };
-                dataGridView1.DataSource = records;
+                dataGridViewRecord.DataSource = records;
                 AdjustDataGridView();
 
             }
@@ -89,8 +85,8 @@ namespace Keuangan
 
                 JArray datas = (JArray)responseDataDictionary["data"];
 
-                comboBox2.Items.Add("null");
-                
+                comboBoxPhoto.Items.Add("null");
+
                 photos.Add(new List<string>
                 {
                     "0",
@@ -107,10 +103,93 @@ namespace Keuangan
                         detail,
                     });
 
-                    comboBox2.Items.Add($"{id} - {detail}");
+                    comboBoxPhoto.Items.Add($"{id} - {detail}");
 
                 };
-                comboBox2.SelectedIndex = 0;
+                comboBoxPhoto.SelectedIndex = 0;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred while making the request: " + ex.Message);
+            }
+            ChangeProgressBarState(false);
+        }
+
+        private async void LoadCategoryData()
+        {
+            categories = new Dictionary<string, List<List<string>>>
+            {
+                { "debit", new List<List<string>>() },
+                { "credit", new List<List<string>>() }
+            };
+            categoriesComboBoxList = new List<List<string>>
+            {
+                new List<string>
+                {
+                    "0 - null"
+                },
+                new List<string>
+                {
+                    "0 - null"
+                },
+            };
+
+            ChangeProgressBarState(true);
+            try
+            {
+                string responseData = await Connection.GetAuthorizedDataAsync(Connection.getCategoriesURL, user.Token);
+
+                Dictionary<string, object> responseDataDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseData);
+
+                JArray datas = (JArray)responseDataDictionary["data"];
+
+                categories["debit"].Add(new List<string>
+                {
+                    "0",
+                    "null"
+                });
+
+                categories["credit"].Add(new List<string>
+                {
+                    "0",
+                    "null"
+                });
+
+                foreach (var selectedData in datas)
+                {
+                    string id = (string)selectedData["id"];
+                    string categoryType = (string)selectedData["categoryType"];
+                    string category = (string)selectedData["category"];
+                    if (categoryType == "debit")
+                    {
+                        categories["debit"].Add(new List<string>
+                        {
+                            id,
+                            category,
+                        });
+                        categoriesComboBoxList[0].Add($"{categoriesComboBoxList[0].Count} - {category}");
+
+                    }
+                    else if (categoryType == "credit")
+                    {
+                        categories["credit"].Add(new List<string>
+                        {
+                            id,
+                            category,
+                        });
+                        categoriesComboBoxList[1].Add($"{categoriesComboBoxList[1].Count} - {category}");
+
+                    }
+                    else
+                    {
+                        throw new Exception("Error! Category type is not valid");
+                    }
+
+                };
+                comboBoxCategory.DataSource = categoriesComboBoxList[0];
+                comboBoxTransaction.SelectedIndex = 0;
+                comboBoxCategory.SelectedIndex = 0;
 
             }
             catch (Exception ex)
@@ -141,12 +220,11 @@ namespace Keuangan
 
                     users.Add(new User(id, username, role));
 
-                    comboBox3.Items.Add($"{id} - {username}");
+                    comboBoxUser.Items.Add($"{id} - {username}");
 
                     if (id == user.ID)
                     {
-                        comboBox3.SelectedIndex = idxx;
-                        defaultUser = idxx;
+                        comboBoxUser.SelectedIndex = idxx;
                         selectedUser = idxx;
                     }
                     idxx += 1;
@@ -163,16 +241,15 @@ namespace Keuangan
 
         private void FormCashFlow_Load(object sender, EventArgs e)
         {
+            LoadCategoryData();
             if (user.Role == "user")
             {
                 label2.Enabled = false;
                 label2.Visible = false;
-                comboBox3.Enabled = false;
-                comboBox3.Visible = false;
+                comboBoxUser.Enabled = false;
+                comboBoxUser.Visible = false;
                 users = null;
-                defaultUser = -1;
-                selectedUser = -1;
-                LoadRecordData(-1);
+                LoadRecordData(user.ID);
             }
             else
             {
@@ -181,16 +258,37 @@ namespace Keuangan
             LoadPhotoData();
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewRecord_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridViewRecord.Rows.Count)
             {
                 ChangeProgressBarState(true);
                 selectedRecord = records[e.RowIndex];
-                comboBox1.SelectedIndex = selectedRecord.Transaction == "debit" ? 0 : 1;
-                textBox3.Text = selectedRecord.ValueRecord.ToString();
-                textBox4.Text = selectedRecord.Detail;
+                comboBoxTransaction.SelectedIndex = selectedRecord.Transaction == "debit" ? 0 : 1;
+                textBoxValue.Text = selectedRecord.ValueRecord.ToString();
+                textBoxDetail.Text = selectedRecord.Detail;
                 dateTimePicker1.Value = selectedRecord.Date;
+                textBoxTag.Text = selectedRecord.Tag;
+
+                if (selectedRecord.CategoryRecordId != null)
+                {
+                    for (int i = 0; i < categories[selectedRecord.Transaction].Count; i++)
+                    {
+                        if (categories[selectedRecord.Transaction][i][0].Contains(selectedRecord.CategoryRecordId.ToString()))
+                        {
+                            comboBoxCategory.DataSource = categoriesComboBoxList[selectedRecord.Transaction == "debit" ? 0 : 1];
+                            comboBoxCategory.SelectedIndex = i;
+                            break;
+                        }
+                    }
+
+                }
+                else
+                {
+                    comboBoxCategory.DataSource = categoriesComboBoxList[selectedRecord.Transaction == "debit" ? 0 : 1];
+                    comboBoxCategory.SelectedIndex = 0;
+
+                }
 
                 if (selectedRecord.PhotoRecordId != null)
                 {
@@ -198,18 +296,20 @@ namespace Keuangan
                     {
                         if (photos[i].Contains(selectedRecord.PhotoRecordId.ToString()))
                         {
-                            comboBox2.SelectedIndex = i;
+                            comboBoxPhoto.SelectedIndex = i;
                             break;
                         }
                     }
 
-                } else
-                {
-                    comboBox2.SelectedIndex = 0;
                 }
+                else
+                {
+                    comboBoxPhoto.SelectedIndex = 0;
+                }
+
                 ChangeProgressBarState(false);
 
-                SetPictureBoxImage(pictureBox4);
+                SetPictureBoxImage(pictureBoxPhoto);
             }
         }
 
@@ -226,24 +326,24 @@ namespace Keuangan
                 ChangeProgressBarState(true);
                 try
                 {
-                    string transaction = comboBox1.SelectedIndex == 0 ? "debit" : "credit";
-                    float value = float.Parse(textBox3.Text);
-                    string detail = textBox4.Text;
+                    string transaction = comboBoxTransaction.SelectedIndex == 0 ? "debit" : "credit";
+                    float value = float.Parse(textBoxValue.Text);
+                    string detail = textBoxDetail.Text;
                     DateTime date = dateTimePicker1.Value;
                     string dateformatted = date.ToString("yyyy-MM-dd");
-
-
+                    string tag = textBoxTag.Text;
+                    int categoryRecordId = comboBoxCategory.SelectedIndex;
 
                     Dictionary<string, string> data = new Dictionary<string, string>
                     {
-                        { "actor", "me" },
+                        { "actorId", users[selectedUser].ID.ToString() },
                         { "transaction", transaction },
                         { "value", value.ToString() },
                         { "detail", detail },
                         { "date", $"{dateformatted}" },
-                        { "tag", defaultUser == -1 ? user.Username : users[selectedUser].Username },
-                        { "sourceRecordId", "2" },
-                        { "photoRecordId", comboBox2.SelectedIndex != 0 ? photos[comboBox2.SelectedIndex][0] : null},
+                        { "tag", tag },
+                        { "categoryRecordId", comboBoxCategory.SelectedIndex != 0 ? categories[transaction][comboBoxCategory.SelectedIndex][0] : null },
+                        { "photoRecordId", comboBoxPhoto.SelectedIndex != 0 ? photos[comboBoxPhoto.SelectedIndex][0] : null},
                     };
 
                     string requestBody = System.Text.Json.JsonSerializer.Serialize(data);
@@ -253,7 +353,7 @@ namespace Keuangan
                     Dictionary<string, object> responseDataDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseData);
 
                     MessageBox.Show(responseDataDictionary["message"].ToString());
-                    LoadRecordData(selectedUser);
+                    LoadRecordData(users[selectedUser].ID);
                 }
                 catch (Exception ex)
                 {
@@ -276,22 +376,24 @@ namespace Keuangan
                 ChangeProgressBarState(true);
                 try
                 {
-                    string transaction = comboBox1.SelectedIndex == 0 ? "debit" : "credit";
-                    float value = float.Parse(textBox3.Text);
-                    string detail = textBox4.Text;
+                    string transaction = comboBoxTransaction.SelectedIndex == 0 ? "debit" : "credit";
+                    float value = float.Parse(textBoxValue.Text);
+                    string detail = textBoxDetail.Text;
                     DateTime date = dateTimePicker1.Value;
                     string dateformatted = date.ToString("yyyy-MM-dd");
+                    string tag = textBoxTag.Text;
+                    int categoryRecordId = comboBoxCategory.SelectedIndex;
 
                     Dictionary<string, string> data = new Dictionary<string, string>
                     {
-                        { "actor", "me" },
+                        { "actorId", users[selectedUser].ID.ToString() },
                         { "transaction", transaction },
                         { "value", value.ToString() },
                         { "detail", detail },
                         { "date", $"{dateformatted}" },
-                        { "tag", defaultUser == -1 ? user.Username : users[selectedUser].Username},
-                        { "sourceRecordId", "2" },
-                        { "photoRecordId", comboBox2.SelectedIndex != 0 ? photos[comboBox2.SelectedIndex][0] : null},
+                        { "tag", tag },
+                        { "categoryRecordId", comboBoxCategory.SelectedIndex != 0 ? categories[transaction][comboBoxCategory.SelectedIndex][0] : null },
+                        { "photoRecordId", comboBoxPhoto.SelectedIndex != 0 ? photos[comboBoxPhoto.SelectedIndex][0] : null},
                     };
 
                     string requestBody = System.Text.Json.JsonSerializer.Serialize(data);
@@ -301,7 +403,7 @@ namespace Keuangan
                     Dictionary<string, object> responseDataDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseData);
 
                     MessageBox.Show(responseDataDictionary["message"].ToString());
-                    LoadRecordData(selectedUser);
+                    LoadRecordData(users[selectedUser].ID);
                 }
                 catch (Exception ex)
                 {
@@ -333,7 +435,7 @@ namespace Keuangan
                     Dictionary<string, object> responseDataDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseData);
 
                     MessageBox.Show(responseDataDictionary["message"].ToString());
-                    LoadRecordData(selectedUser);
+                    LoadRecordData(users[selectedUser].ID);
                 }
                 catch (Exception ex)
                 {
@@ -343,21 +445,21 @@ namespace Keuangan
             }
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxPhoto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SetPictureBoxImage(pictureBox4);
+            SetPictureBoxImage(pictureBoxPhoto);
 
         }
 
         private async void SetPictureBoxImage(PictureBox pictureBox4)
         {
             pictureBox4.Image = null;
-            if (comboBox2.SelectedIndex != 0)
+            if (comboBoxPhoto.SelectedIndex != 0)
             {
                 ChangeProgressBarState(true);
                 try
                 {
-                    int indexImage = Int32.Parse(photos[comboBox2.SelectedIndex][0]);
+                    int indexImage = Int32.Parse(photos[comboBoxPhoto.SelectedIndex][0]);
                     using (HttpClient httpClient = new HttpClient())
                     {
                         httpClient.DefaultRequestHeaders.Add("Authorization", user.Token);
@@ -402,13 +504,13 @@ namespace Keuangan
 
         private void DoSearch()
         {
-            if (textBox1.Text == "" || textBox1.Text == null)
+            if (textBoxSearch.Text == "" || textBoxSearch.Text == null)
             {
-                dataGridView1.DataSource = records;
+                dataGridViewRecord.DataSource = records;
             }
             else
             {
-                string searchTerm = textBox1.Text.ToLower();
+                string searchTerm = textBoxSearch.Text.ToLower();
 
                 var filteredData = records.Where(item =>
                     item.Transaction.ToLower().Contains(searchTerm) ||
@@ -418,26 +520,62 @@ namespace Keuangan
                     item.Tag.ToLower().Contains(searchTerm)
                     ).ToList();
 
-                dataGridView1.DataSource = filteredData;
+                dataGridViewRecord.DataSource = filteredData;
             }
             AdjustDataGridView();
         }
 
         private void AdjustDataGridView()
         {
-            dataGridView1.Columns["id"].Visible = false;
-            dataGridView1.Columns["photoRecordId"].Visible = false;
-            dataGridView1.Columns["transaction"].HeaderText = "Transaction";
-            dataGridView1.Columns["valueRecord"].HeaderText = "Value";
-            dataGridView1.Columns["date"].HeaderText = "Date";
-            dataGridView1.Columns["detail"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns["tag"].Visible = false;
+            if (!dataGridViewRecord.Columns.Contains("Category"))
+            {
+                DataGridViewTextBoxColumn categoryColumn = new DataGridViewTextBoxColumn();
+                categoryColumn.Name = "category";
+                categoryColumn.HeaderText = "Category";
+                dataGridViewRecord.Columns.Add(categoryColumn);
+                dataGridViewRecord.Columns["category"].DisplayIndex = 6;
+            }
+
+            dataGridViewRecord.Columns["id"].Visible = false;
+            dataGridViewRecord.Columns["actorId"].Visible = false;
+            dataGridViewRecord.Columns["photoRecordId"].Visible = false;
+            dataGridViewRecord.Columns["categoryRecordId"].Visible = false;
+            dataGridViewRecord.Columns["transaction"].HeaderText = "Transaction";
+            dataGridViewRecord.Columns["valueRecord"].HeaderText = "Value";
+            dataGridViewRecord.Columns["date"].HeaderText = "Date";
+            dataGridViewRecord.Columns["detail"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            foreach (DataGridViewRow row in dataGridViewRecord.Rows)
+            {
+                if (row.Cells["categoryRecordId"].Value != null)
+                {
+                    for (int i = 0; i < categories[row.Cells["transaction"].Value.ToString()].Count; i++)
+                    {
+                        if (categories[row.Cells["transaction"].Value.ToString()][i][0].Contains(row.Cells["categoryRecordId"].Value.ToString()))
+                        {
+                            row.Cells["category"].Value = categories[row.Cells["transaction"].Value.ToString()][i][1];
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedUser = comboBox3.SelectedIndex;
-            LoadRecordData(selectedUser);
+            selectedUser = comboBoxUser.SelectedIndex;
+            LoadRecordData(users[selectedUser].ID);
+        }
+
+        private void comboBoxTransaction_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxCategory.DataSource = categoriesComboBoxList[comboBoxTransaction.SelectedIndex];
+            comboBoxCategory.SelectedIndex = 0;
+        }
+
+        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

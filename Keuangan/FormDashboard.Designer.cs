@@ -28,430 +28,427 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            panel1 = new System.Windows.Forms.Panel();
+            pictureBox6 = new System.Windows.Forms.PictureBox();
+            label10 = new System.Windows.Forms.Label();
+            panel2 = new System.Windows.Forms.Panel();
+            label11 = new System.Windows.Forms.Label();
+            pictureBox4 = new System.Windows.Forms.PictureBox();
+            panel3 = new System.Windows.Forms.Panel();
+            pictureBox5 = new System.Windows.Forms.PictureBox();
+            panel4 = new System.Windows.Forms.Panel();
+            label13 = new System.Windows.Forms.Label();
+            pictureBox7 = new System.Windows.Forms.PictureBox();
+            label12 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            statusStrip1 = new System.Windows.Forms.StatusStrip();
+            toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            comboBox1 = new System.Windows.Forms.ComboBox();
+            label14 = new System.Windows.Forms.Label();
+            label15 = new System.Windows.Forms.Label();
+            pictureBox8 = new System.Windows.Forms.PictureBox();
+            pictureBox3 = new System.Windows.Forms.PictureBox();
+            pictureBox2 = new System.Windows.Forms.PictureBox();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 10);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(171, 18);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Credit Bulan";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label3.Location = new System.Drawing.Point(22, 12);
+            label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(199, 21);
+            label3.TabIndex = 8;
+            label3.Text = "Credit Bulan";
+            label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 40);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Cash Flow";
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(9, 46);
+            label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(61, 15);
+            label4.TabIndex = 12;
+            label4.Text = "Cash Flow";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(82, 40);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Upload Bill";
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(96, 46);
+            label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(64, 15);
+            label5.TabIndex = 13;
+            label5.Text = "Upload Bill";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(476, 40);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Logout";
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(555, 46);
+            label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(45, 15);
+            label6.TabIndex = 22;
+            label6.Text = "Logout";
             // 
             // label7
             // 
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(127, 87);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(153, 44);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Rp000.000.000";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label7.BackColor = System.Drawing.Color.White;
+            label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label7.Location = new System.Drawing.Point(148, 100);
+            label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(179, 51);
+            label7.TabIndex = 23;
+            label7.Text = "Rp000.000.000";
+            label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(59, 34);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(134, 44);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Rp000.000.000";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label8.BackColor = System.Drawing.Color.White;
+            label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label8.Location = new System.Drawing.Point(69, 39);
+            label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(156, 51);
+            label8.TabIndex = 24;
+            label8.Text = "Rp000.000.000";
+            label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
-            this.label9.BackColor = System.Drawing.Color.White;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(59, 36);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(134, 39);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "Rp000.000.000";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label9.BackColor = System.Drawing.Color.White;
+            label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label9.Location = new System.Drawing.Point(69, 42);
+            label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(156, 45);
+            label9.TabIndex = 25;
+            label9.Text = "Rp000.000.000";
+            label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gold;
-            this.panel1.Controls.Add(this.pictureBox6);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Location = new System.Drawing.Point(12, 72);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(302, 186);
-            this.panel1.TabIndex = 26;
+            panel1.BackColor = System.Drawing.Color.Gold;
+            panel1.Controls.Add(pictureBox6);
+            panel1.Controls.Add(label10);
+            panel1.Controls.Add(label7);
+            panel1.Location = new System.Drawing.Point(14, 83);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(352, 215);
+            panel1.TabIndex = 26;
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::Keuangan.Properties.Resources.income;
-            this.pictureBox6.Location = new System.Drawing.Point(13, 48);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(99, 99);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 5;
-            this.pictureBox6.TabStop = false;
+            pictureBox6.Image = Properties.Resources.income;
+            pictureBox6.Location = new System.Drawing.Point(15, 55);
+            pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new System.Drawing.Size(116, 114);
+            pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox6.TabIndex = 5;
+            pictureBox6.TabStop = false;
             // 
             // label10
             // 
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(127, 39);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(153, 45);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "Balance";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label10.BackColor = System.Drawing.Color.Transparent;
+            label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label10.Location = new System.Drawing.Point(148, 45);
+            label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(179, 52);
+            label10.TabIndex = 24;
+            label10.Text = "Balance";
+            label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Lime;
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(320, 72);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(201, 90);
-            this.panel2.TabIndex = 27;
+            panel2.BackColor = System.Drawing.Color.Lime;
+            panel2.Controls.Add(label11);
+            panel2.Controls.Add(pictureBox4);
+            panel2.Controls.Add(label8);
+            panel2.Location = new System.Drawing.Point(373, 83);
+            panel2.Name = "panel2";
+            panel2.Size = new System.Drawing.Size(235, 104);
+            panel2.TabIndex = 27;
             // 
             // label11
             // 
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(19, 10);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(171, 18);
-            this.label11.TabIndex = 26;
-            this.label11.Text = "Debit Bulan";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label11.Location = new System.Drawing.Point(22, 12);
+            label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(199, 21);
+            label11.TabIndex = 26;
+            label11.Text = "Debit Bulan";
+            label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::Keuangan.Properties.Resources.profits;
-            this.pictureBox4.Location = new System.Drawing.Point(4, 31);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(51, 49);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 3;
-            this.pictureBox4.TabStop = false;
+            pictureBox4.Image = Properties.Resources.profits;
+            pictureBox4.Location = new System.Drawing.Point(5, 36);
+            pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new System.Drawing.Size(60, 57);
+            pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 3;
+            pictureBox4.TabStop = false;
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.OrangeRed;
-            this.panel3.Controls.Add(this.pictureBox5);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(320, 168);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(201, 90);
-            this.panel3.TabIndex = 28;
+            panel3.BackColor = System.Drawing.Color.OrangeRed;
+            panel3.Controls.Add(pictureBox5);
+            panel3.Controls.Add(label9);
+            panel3.Controls.Add(label3);
+            panel3.Location = new System.Drawing.Point(373, 194);
+            panel3.Name = "panel3";
+            panel3.Size = new System.Drawing.Size(235, 104);
+            panel3.TabIndex = 28;
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::Keuangan.Properties.Resources.outcome;
-            this.pictureBox5.Location = new System.Drawing.Point(4, 31);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(51, 50);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 4;
-            this.pictureBox5.TabStop = false;
+            pictureBox5.Image = Properties.Resources.outcome;
+            pictureBox5.Location = new System.Drawing.Point(5, 36);
+            pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new System.Drawing.Size(60, 58);
+            pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox5.TabIndex = 4;
+            pictureBox5.TabStop = false;
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.pictureBox7);
-            this.panel4.Controls.Add(this.label12);
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(12, 264);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(509, 114);
-            this.panel4.TabIndex = 27;
+            panel4.BackColor = System.Drawing.Color.DeepSkyBlue;
+            panel4.Controls.Add(label13);
+            panel4.Controls.Add(pictureBox7);
+            panel4.Controls.Add(label12);
+            panel4.Controls.Add(label1);
+            panel4.Controls.Add(label2);
+            panel4.Location = new System.Drawing.Point(14, 305);
+            panel4.Name = "panel4";
+            panel4.Size = new System.Drawing.Size(594, 132);
+            panel4.TabIndex = 27;
             // 
             // label13
             // 
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(200, 19);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(80, 17);
-            this.label13.TabIndex = 26;
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label13.BackColor = System.Drawing.Color.Transparent;
+            label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label13.Location = new System.Drawing.Point(233, 22);
+            label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(93, 20);
+            label13.TabIndex = 26;
+            label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::Keuangan.Properties.Resources.money;
-            this.pictureBox7.Location = new System.Drawing.Point(399, 30);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(99, 99);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 25;
-            this.pictureBox7.TabStop = false;
+            pictureBox7.Image = Properties.Resources.money;
+            pictureBox7.Location = new System.Drawing.Point(466, 35);
+            pictureBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new System.Drawing.Size(116, 114);
+            pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox7.TabIndex = 25;
+            pictureBox7.TabStop = false;
             // 
             // label12
             // 
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(179, 44);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(204, 61);
-            this.label12.TabIndex = 25;
+            label12.BackColor = System.Drawing.Color.Transparent;
+            label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label12.Location = new System.Drawing.Point(209, 51);
+            label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(238, 70);
+            label12.TabIndex = 25;
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(2, 10);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 34);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Last Transaction";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label1.BackColor = System.Drawing.Color.Transparent;
+            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label1.Location = new System.Drawing.Point(2, 12);
+            label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(226, 39);
+            label1.TabIndex = 24;
+            label1.Text = "Last Transaction";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 44);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 44);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Rp000.000.000";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label2.BackColor = System.Drawing.Color.White;
+            label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label2.Location = new System.Drawing.Point(19, 51);
+            label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(179, 51);
+            label2.TabIndex = 23;
+            label2.Text = "Rp000.000.000";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 391);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(533, 22);
-            this.statusStrip1.TabIndex = 29;
-            this.statusStrip1.Text = "statusStrip1";
+            statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripStatusLabel1, toolStripProgressBar1 });
+            statusStrip1.Location = new System.Drawing.Point(0, 452);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            statusStrip1.Size = new System.Drawing.Size(625, 23);
+            statusStrip1.TabIndex = 29;
+            statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-            this.toolStripStatusLabel1.Text = "Ready";
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new System.Drawing.Size(39, 18);
+            toolStripStatusLabel1.Text = "Ready";
             // 
             // toolStripProgressBar1
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            toolStripProgressBar1.Name = "toolStripProgressBar1";
+            toolStripProgressBar1.Size = new System.Drawing.Size(117, 17);
             // 
             // comboBox1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(194, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 30;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new System.Drawing.Point(226, 37);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new System.Drawing.Size(141, 23);
+            comboBox1.TabIndex = 30;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label14
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(191, 16);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(97, 13);
-            this.label14.TabIndex = 31;
-            this.label14.Text = "Show stats for user";
+            label14.AutoSize = true;
+            label14.Location = new System.Drawing.Point(223, 18);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(106, 15);
+            label14.TabIndex = 31;
+            label14.Text = "Show stats for user";
             // 
             // label15
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(422, 40);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(36, 13);
-            this.label15.TabIndex = 33;
-            this.label15.Text = "Profile";
+            label15.AutoSize = true;
+            label15.Location = new System.Drawing.Point(492, 46);
+            label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(41, 15);
+            label15.TabIndex = 33;
+            label15.Text = "Profile";
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::Keuangan.Properties.Resources.user;
-            this.pictureBox8.Location = new System.Drawing.Point(425, 8);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(31, 30);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 32;
-            this.pictureBox8.TabStop = false;
-            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
+            pictureBox8.Image = Properties.Resources.user;
+            pictureBox8.Location = new System.Drawing.Point(496, 9);
+            pictureBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new System.Drawing.Size(36, 35);
+            pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox8.TabIndex = 32;
+            pictureBox8.TabStop = false;
+            pictureBox8.Click += pictureBox8_Click;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::Keuangan.Properties.Resources.logout;
-            this.pictureBox3.Location = new System.Drawing.Point(479, 8);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 30);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            pictureBox3.Image = Properties.Resources.logout;
+            pictureBox3.Location = new System.Drawing.Point(559, 9);
+            pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new System.Drawing.Size(36, 35);
+            pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 2;
+            pictureBox3.TabStop = false;
+            pictureBox3.Click += pictureBox3_Click;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Keuangan.Properties.Resources.bill;
-            this.pictureBox2.Location = new System.Drawing.Point(93, 8);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            pictureBox2.Image = Properties.Resources.bill;
+            pictureBox2.Location = new System.Drawing.Point(109, 9);
+            pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new System.Drawing.Size(36, 35);
+            pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 1;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Keuangan.Properties.Resources.cash_flow__2_;
-            this.pictureBox1.Location = new System.Drawing.Point(20, 8);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            pictureBox1.Image = Properties.Resources.cash_flow__2_;
+            pictureBox1.Location = new System.Drawing.Point(23, 9);
+            pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(36, 35);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // FormDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 413);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(549, 452);
-            this.MinimumSize = new System.Drawing.Size(549, 452);
-            this.Name = "FormDashboard";
-            this.Text = "CashFlow Tracker";
-            this.Load += new System.EventHandler(this.FormDashboard_Load);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(625, 475);
+            Controls.Add(label15);
+            Controls.Add(pictureBox8);
+            Controls.Add(label14);
+            Controls.Add(comboBox1);
+            Controls.Add(statusStrip1);
+            Controls.Add(panel4);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(pictureBox3);
+            Controls.Add(pictureBox2);
+            Controls.Add(pictureBox1);
+            Controls.Add(panel1);
+            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            MaximizeBox = false;
+            MinimumSize = new System.Drawing.Size(641, 514);
+            Name = "FormDashboard";
+            Text = "CashFlow Tracker";
+            Load += FormDashboard_Load;
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

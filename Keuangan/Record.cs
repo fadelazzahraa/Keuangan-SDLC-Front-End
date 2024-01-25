@@ -9,21 +9,25 @@ namespace Keuangan
     public class Record
     {
 		private int id;
+		private int actorId;
 		private string transaction;
 		private float valueRecord;
 		private string detail;
 		private DateTime date;
 		private string tag;
+		private int? categoryRecordId;
 		private int? photoRecordId;
 
-        public Record(int id, string transaction, float valueRecord, string detail, DateTime date, string tag, int? photoRecordId)
+        public Record(int id, int actorId, string transaction, float valueRecord, string detail, DateTime date, string tag, int? categoryRecordId, int? photoRecordId)
         {
 			this.id = id;
+			this.actorId = actorId;
 			this.transaction = transaction;
 			this.valueRecord = valueRecord;
 			this.detail = detail;
 			this.date = date;
 			this.tag = tag;
+			this.categoryRecordId = categoryRecordId;
 			this.photoRecordId = photoRecordId;
         }
 
@@ -32,6 +36,12 @@ namespace Keuangan
 			get { return id; }
 			set { id = value; }
 		}
+
+        public int ActorId
+        {
+            get { return actorId; }
+            set { actorId = value; }
+        }
 
         public string Transaction
         {
@@ -61,6 +71,12 @@ namespace Keuangan
         {
             get { return tag; }
             set { tag = value; }
+        }
+
+        public int? CategoryRecordId
+        {
+            get { return categoryRecordId; }
+            set { categoryRecordId = value; }
         }
 
         public int? PhotoRecordId

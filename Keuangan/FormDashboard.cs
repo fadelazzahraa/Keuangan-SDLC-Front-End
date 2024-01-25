@@ -21,7 +21,6 @@ namespace Keuangan
         private User user;
         private List<Record> records;
         private List<User> users;
-        private int defaultUser;
         private int selectedUser;
 
         public FormDashboard(User loggedinuser)
@@ -36,15 +35,7 @@ namespace Keuangan
             ChangeProgressBarState(true);
             try
             {
-                string responseData = "";
-                if (userId.Equals(-1))
-                {
-                    responseData = await Connection.GetAuthorizedDataAsync(Connection.getRecordByUserURL(user.Username), user.Token);
-                }
-                else
-                {
-                    responseData = await Connection.GetAuthorizedDataAsync(Connection.getRecordByUserURL(users[userId].Username), user.Token);
-                }
+                string responseData = await Connection.GetAuthorizedDataAsync(Connection.getRecordByUserURL(userId), user.Token);
 
                 Dictionary<string, object> responseDataDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseData);
 
@@ -53,13 +44,16 @@ namespace Keuangan
                 foreach (var selectedData in datas)
                 {
                     int id = (int)selectedData["id"];
+                    int actorId = (int)selectedData["actorId"];
                     string transaction = (string)selectedData["transaction"];
                     float value = (float)selectedData["value"];
                     string detail = (string)selectedData["detail"];
                     DateTime date = (DateTime)selectedData["date"];
+                    string tag = (string)selectedData["tag"];
+                    int? categoryRecordId = (int?)selectedData["categoryRecordId"];
                     int? photoRecordId = (int?)selectedData["photoRecordId"];
 
-                    records.Add(new Record(id, transaction, value, detail, date, user.Username, photoRecordId));
+                    records.Add(new Record(id, actorId, transaction, value, detail, date, tag, categoryRecordId, photoRecordId));
                 }
 
                 float balance = 0;
@@ -152,7 +146,6 @@ namespace Keuangan
                     if (id == user.ID)
                     {
                         comboBox1.SelectedIndex = idxx;
-                        defaultUser = idxx;
                         selectedUser = idxx;
                     }
                     idxx += 1;
@@ -176,8 +169,7 @@ namespace Keuangan
                 comboBox1.Enabled = false;
                 comboBox1.Visible = false;
                 users = null;
-                defaultUser = -1;
-                LoadRecordData(-1);
+                LoadRecordData(user.ID);
             } else
             {
                 LoadUsersData();
@@ -200,8 +192,14 @@ namespace Keuangan
             formCashFlow.Closed += (s, args) =>
             {
                 this.Show();
-                comboBox1.SelectedIndex = defaultUser;
-                LoadRecordData(defaultUser);
+                if (user.Role == "user")
+                {
+                    LoadRecordData(user.ID);
+                }
+                else
+                {
+                    LoadUsersData();
+                }
             };
             formCashFlow.Show();
         }
@@ -213,8 +211,14 @@ namespace Keuangan
             formUploadBill.Closed += (s, args) =>
             {
                 this.Show();
-                comboBox1.SelectedIndex = defaultUser;
-                LoadRecordData(defaultUser);
+                if (user.Role == "user")
+                {
+                    LoadRecordData(user.ID);
+                }
+                else
+                {
+                    LoadUsersData();
+                }
             };
             formUploadBill.Show();
         }
@@ -238,7 +242,7 @@ namespace Keuangan
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedUser = comboBox1.SelectedIndex;
-            LoadRecordData(selectedUser);
+            LoadRecordData(users[selectedUser].ID);
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
@@ -248,8 +252,14 @@ namespace Keuangan
             formProfile.Closed += (s, args) =>
             {
                 this.Show();
-                comboBox1.SelectedIndex = defaultUser;
-                LoadRecordData(defaultUser);
+                if (user.Role == "user")
+                {
+                    LoadRecordData(user.ID);
+                }
+                else
+                {
+                    LoadUsersData();
+                }
             };
             formProfile.Show();
         }

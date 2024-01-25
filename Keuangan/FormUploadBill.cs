@@ -66,8 +66,7 @@ namespace Keuangan
                         Dictionary<string, string> data = new Dictionary<string, string>
                         {
                             { "detail", textBox1.Text},
-                            { "startDate", DateTime.Now.ToString("yyyy-MM-dd")},
-                            { "tag", "Bank Secure SDLC Photo"},
+                            { "date", DateTime.Now.ToString("yyyy-MM-dd")},
                         };
 
                         string requestBody = System.Text.Json.JsonSerializer.Serialize(data);
@@ -130,7 +129,8 @@ namespace Keuangan
 
                 uploadButton.Enabled = true;
                 textBox1.Enabled = true;
-            } else
+            }
+            else
             {
                 selectedFilePath = null;
             }
@@ -151,7 +151,8 @@ namespace Keuangan
 
                 label2.Enabled = true;
                 label2.Visible = true;
-            } else
+            }
+            else
             {
                 selectImageButton.Enabled = true;
                 selectImageButton.Visible = true;
@@ -167,6 +168,10 @@ namespace Keuangan
             }
         }
 
+        private void FormUploadBill_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
     

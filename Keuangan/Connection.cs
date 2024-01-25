@@ -12,12 +12,23 @@ namespace Keuangan
 {
     public class Connection
     {
+        /* HOST URL */
         static private string hostURL = "http://127.0.0.1:8080/";
+        
+        /* USER MANAGEMENT */
         static public string signinURL = hostURL + "auth/signin";
-        static public string getRecordsURL = hostURL + "records?sourceRecordId=2";
-        static public string getRecordByUserURL(string username)
+        static public string signupURL = hostURL + "auth/signup";
+        static public string getUsersURL = hostURL + "user";
+        static public string getUserProfileURL = hostURL + "user/profile";
+        static public string postUserProfileURL = hostURL + "user/profile";
+        static public string changePasswordURL = hostURL + "user/password";
+        static public string changeRoleURL = hostURL + "user/role";
+
+        /* RECORD */
+        static public string getRecordsURL = hostURL + "records";
+        static public string getRecordByUserURL(int userId)
         {
-            return $"{hostURL}records?sourceRecordId=2&tag={username}";
+            return $"{hostURL}records?actorId={userId}";
         }
         static public string addRecordURL = hostURL + "records";
         static public string editRecordURL(int index)
@@ -28,6 +39,33 @@ namespace Keuangan
         {
             return $"{hostURL}records/{index}";
         }
+
+        /* PHOTO */
+        static public string uploadPhotoURL = hostURL + "photos/upload";
+        static public string postPhotoURL = hostURL + "photos";
+        static public string setPhotoURL(int index)
+        {
+            return $"{hostURL}photos/{index}/image";
+        }
+        static public string getPhotoURL = hostURL + "photos";
+        static public string getPhotoImageWithIndexURL(int index)
+        {
+            return $"{hostURL}photos/{index}/image";
+        }
+
+        /* CATEGORY */
+        static public string getCategoriesURL = hostURL + "category";
+        static public string addCategoryURL = hostURL + "category";
+        static public string editCategoryURL(int index)
+        {
+            return $"{hostURL}category/{index}";
+        }
+        static public string deleteCategoryURL(int index)
+        {
+            return $"{hostURL}category/{index}";
+        }
+
+        /* REQUEST CONTROLLER */
         static public async Task<string> PostDataAsync(string url, string requestBody)
         {
             using (HttpClient httpClient = new HttpClient())
@@ -40,20 +78,19 @@ namespace Keuangan
                 return responseData;
             }
         }
-        static public string uploadPhotoURL = hostURL + "photos/upload";
-        static public string postPhotoURL = hostURL + "photos";
-        static public string setPhotoURL(int index)
+
+        static public async Task<string> GetAuthorizedDataAsync(string url, string token)
         {
-            return $"{hostURL}photos/{index}/image";
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Add("Authorization", token);
+
+                HttpResponseMessage response = await httpClient.GetAsync(url);
+
+                string responseData = await response.Content.ReadAsStringAsync();
+                return responseData;
+            }
         }
-        static public string getPhotoURL = hostURL + "photos?tag=Bank Secure SDLC Photo";
-        static public string getPhotoImageWithIndexURL(int index)
-        {
-            return $"{hostURL}photos/{index}/image";
-        }
-        static public string getUsersURL = hostURL + "user";
-        static public string postUserProfileURL = hostURL + "user/profile";
-        static public string changePasswordURL = hostURL + "user/password";
 
         static public async Task<string> PostAuthorizedDataAsync(string url, string requestBody, string token)
         {
@@ -96,17 +133,6 @@ namespace Keuangan
             }
         }
 
-        static public async Task<string> GetAuthorizedDataAsync(string url, string token)
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                httpClient.DefaultRequestHeaders.Add("Authorization", token);
-
-                HttpResponseMessage response = await httpClient.GetAsync(url);
-
-                string responseData = await response.Content.ReadAsStringAsync();
-                return responseData;
-            }
-        }
+        
     }
 }
