@@ -209,6 +209,8 @@ namespace Keuangan
         private async void LoadUsersData()
         {
             users = new List<User>();
+            comboBoxStatsUser.Items.Clear();
+            comboBoxStatisticUsers.Items.Clear();
             ChangeProgressBarState(true);
             try
             {
