@@ -6,6 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
 	<ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
+	<UserSecretsId>b777e92a-be68-485e-b0ec-0bd4ea33ae6f</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <None Include="Resources\money %281%29.png" />
@@ -15,11 +16,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
     <PackageReference Include="System.Text.Encodings.Web" Version="7.0.0" />
     <PackageReference Include="System.Text.Json" Version="7.0.3" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.9.1" />
   </ItemGroup>
 </Project>

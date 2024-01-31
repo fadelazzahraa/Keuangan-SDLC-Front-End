@@ -67,6 +67,7 @@ namespace Keuangan
                         {
                             { "detail", textBox1.Text},
                             { "date", DateTime.Now.ToString("yyyy-MM-dd")},
+                            { "tag", textBox2.Text},
                         };
 
                         string requestBody = System.Text.Json.JsonSerializer.Serialize(data);
@@ -129,6 +130,7 @@ namespace Keuangan
 
                 uploadButton.Enabled = true;
                 textBox1.Enabled = true;
+                textBox2.Enabled = true;
             }
             else
             {
@@ -146,8 +148,12 @@ namespace Keuangan
                 uploadButton.Visible = false;
                 textBox1.Enabled = false;
                 textBox1.Visible = false;
+                textBox2.Enabled = false;
+                textBox2.Visible = false;
                 label1.Enabled = false;
                 label1.Visible = false;
+                label3.Enabled = false;
+                label3.Visible = false;
 
                 label2.Enabled = true;
                 label2.Visible = true;
@@ -160,8 +166,12 @@ namespace Keuangan
                 uploadButton.Visible = true;
                 textBox1.Enabled = true;
                 textBox1.Visible = true;
+                textBox2.Enabled = true;
+                textBox2.Visible = true;
                 label1.Enabled = true;
                 label1.Visible = true;
+                label3.Enabled = true;
+                label3.Visible = true;
 
                 label2.Enabled = false;
                 label2.Visible = false;
