@@ -51,7 +51,6 @@
             pictureBoxCashFlow = new System.Windows.Forms.PictureBox();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
-            labelStatsUser = new System.Windows.Forms.Label();
             comboBoxStatsUser = new System.Windows.Forms.ComboBox();
             panel4 = new System.Windows.Forms.Panel();
             label13 = new System.Windows.Forms.Label();
@@ -71,6 +70,7 @@
             pictureBox6 = new System.Windows.Forms.PictureBox();
             label10 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
+            labelStatsUser = new System.Windows.Forms.Label();
             tabPage2 = new System.Windows.Forms.TabPage();
             tabControl2 = new System.Windows.Forms.TabControl();
             tabPageDebitDay = new System.Windows.Forms.TabPage();
@@ -90,6 +90,9 @@
             comboBoxStatisticUsers = new System.Windows.Forms.ComboBox();
             labelStatisticYourAccount = new System.Windows.Forms.Label();
             tabPage3 = new System.Windows.Forms.TabPage();
+            buttonSendChatBox = new System.Windows.Forms.Button();
+            richTextBoxChatBox = new System.Windows.Forms.RichTextBox();
+            listBoxChat = new System.Windows.Forms.ListBox();
             label14 = new System.Windows.Forms.Label();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxProfile).BeginInit();
@@ -262,15 +265,6 @@
             tabPage1.Text = "Dashboard";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // labelStatsUser
-            // 
-            labelStatsUser.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            labelStatsUser.Location = new System.Drawing.Point(231, 17);
-            labelStatsUser.Name = "labelStatsUser";
-            labelStatsUser.Size = new System.Drawing.Size(305, 15);
-            labelStatsUser.TabIndex = 40;
-            labelStatsUser.Text = "Showing stats for account of";
-            // 
             // comboBoxStatsUser
             // 
             comboBoxStatsUser.FormattingEnabled = true;
@@ -320,7 +314,7 @@
             // 
             // label12
             // 
-            label12.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            label12.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             label12.BackColor = System.Drawing.Color.Transparent;
             label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             label12.Location = new System.Drawing.Point(262, 51);
@@ -344,7 +338,6 @@
             // 
             // label2
             // 
-            label2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             label2.BackColor = System.Drawing.Color.White;
             label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             label2.Location = new System.Drawing.Point(19, 51);
@@ -501,6 +494,15 @@
             label7.TabIndex = 23;
             label7.Text = "Rp000.000.000";
             label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelStatsUser
+            // 
+            labelStatsUser.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            labelStatsUser.Location = new System.Drawing.Point(231, 17);
+            labelStatsUser.Name = "labelStatsUser";
+            labelStatsUser.Size = new System.Drawing.Size(305, 15);
+            labelStatsUser.TabIndex = 40;
+            labelStatsUser.Text = "Showing stats for account of";
             // 
             // tabPage2
             // 
@@ -730,6 +732,9 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(buttonSendChatBox);
+            tabPage3.Controls.Add(richTextBoxChatBox);
+            tabPage3.Controls.Add(listBoxChat);
             tabPage3.Controls.Add(label14);
             tabPage3.Location = new System.Drawing.Point(4, 24);
             tabPage3.Name = "tabPage3";
@@ -739,14 +744,50 @@
             tabPage3.Text = "Recommendation";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // buttonSendChatBox
+            // 
+            buttonSendChatBox.Enabled = false;
+            buttonSendChatBox.Location = new System.Drawing.Point(634, 345);
+            buttonSendChatBox.Name = "buttonSendChatBox";
+            buttonSendChatBox.Size = new System.Drawing.Size(103, 79);
+            buttonSendChatBox.TabIndex = 44;
+            buttonSendChatBox.Text = "✒️ Send!";
+            buttonSendChatBox.UseVisualStyleBackColor = true;
+            buttonSendChatBox.Click += buttonSendChatBox_Click;
+            // 
+            // richTextBoxChatBox
+            // 
+            richTextBoxChatBox.DetectUrls = false;
+            richTextBoxChatBox.Enabled = false;
+            richTextBoxChatBox.Location = new System.Drawing.Point(16, 345);
+            richTextBoxChatBox.Name = "richTextBoxChatBox";
+            richTextBoxChatBox.Size = new System.Drawing.Size(613, 79);
+            richTextBoxChatBox.TabIndex = 43;
+            richTextBoxChatBox.Text = "";
+            richTextBoxChatBox.KeyDown += richTextBoxChatBox_KeyDown;
+            // 
+            // listBoxChat
+            // 
+            listBoxChat.Font = new System.Drawing.Font("Segoe UI", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            listBoxChat.FormattingEnabled = true;
+            listBoxChat.HorizontalScrollbar = true;
+            listBoxChat.ItemHeight = 19;
+            listBoxChat.Location = new System.Drawing.Point(16, 35);
+            listBoxChat.Name = "listBoxChat";
+            listBoxChat.ScrollAlwaysVisible = true;
+            listBoxChat.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            listBoxChat.Size = new System.Drawing.Size(721, 289);
+            listBoxChat.TabIndex = 42;
+            // 
             // label14
             // 
-            label14.AutoSize = true;
-            label14.Location = new System.Drawing.Point(16, 16);
+            label14.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            label14.Location = new System.Drawing.Point(271, 13);
             label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(216, 15);
+            label14.Size = new System.Drawing.Size(240, 15);
             label14.TabIndex = 41;
             label14.Text = "Recommendation powered by ChatGPT";
+            label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FormDashboard
             // 
@@ -795,7 +836,6 @@
             tabPageCreditMonth.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chartCreditMonths).EndInit();
             tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -855,5 +895,8 @@
         private System.Windows.Forms.TabPage tabPageCreditMonth;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartCreditMonths;
+        private System.Windows.Forms.Button buttonSendChatBox;
+        private System.Windows.Forms.RichTextBox richTextBoxChatBox;
+        private System.Windows.Forms.ListBox listBoxChat;
     }
 }

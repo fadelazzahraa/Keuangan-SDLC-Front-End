@@ -12,8 +12,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using OpenAI_API.Chat;
+using OpenAI_API;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Diagnostics;
 
 namespace Keuangan
 {
@@ -23,6 +27,8 @@ namespace Keuangan
         private List<Record> records;
         private List<User> users;
         private int selectedUser;
+        static readonly OpenAIAPI api = new("");
+        Conversation chat = api.Chat.CreateConversation();
 
         public FormDashboard(User loggedinuser)
         {
@@ -407,11 +413,13 @@ namespace Keuangan
 
             if (radioButtonStatsOfUser.Checked)
             {
+                comboBoxStatisticUsers.Enabled = true;
                 selectedUser = comboBoxStatisticUsers.SelectedIndex;
                 LoadRecordDataForStatistics(users[selectedUser].ID);
             }
             else if (radioButtonStatsAllUsers.Checked)
             {
+                comboBoxStatisticUsers.Enabled = false;
                 LoadRecordDataForStatistics(0, true);
             }
         }
@@ -439,7 +447,8 @@ namespace Keuangan
                     LoadRecordDataForDashboard(users[selectedUser].ID);
                 }
 
-            } else if (tabControl1.SelectedIndex == 1)
+            }
+            else if (tabControl1.SelectedIndex == 1)
             {
                 if (user.Role == "user")
                 {
@@ -457,7 +466,166 @@ namespace Keuangan
                         LoadRecordDataForStatistics(0, true);
                     }
                 }
-                
+
+            }
+            else if (tabControl1.SelectedIndex == 2)
+            {
+                if (user.Role == "user")
+                {
+                    LoadRecordDataForChatBot(user.ID);
+                }
+                else
+                {
+                    LoadRecordDataForChatBot(0, true);
+                }
+            }
+        }
+
+        private async void LoadRecordDataForChatBot(int userId, bool allData = false)
+        {
+            records = new List<Record>();
+            ChangeProgressBarState(true);
+            try
+            {
+                string responseData = await Connection.GetAuthorizedDataAsync(allData ? Connection.getRecordsURL : Connection.getRecordByUserURL(userId), user.Token);
+
+                Dictionary<string, object> responseDataDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseData);
+
+                JArray datas = (JArray)responseDataDictionary["data"];
+
+                foreach (var selectedData in datas)
+                {
+                    int id = (int)selectedData["id"];
+                    int actorId = (int)selectedData["actorId"];
+                    string transaction = (string)selectedData["transaction"];
+                    float value = (float)selectedData["value"];
+                    string detail = (string)selectedData["detail"];
+                    DateTime date = (DateTime)selectedData["date"];
+                    string tag = (string)selectedData["tag"];
+                    int? categoryRecordId = (int?)selectedData["categoryRecordId"];
+                    int? photoRecordId = (int?)selectedData["photoRecordId"];
+
+                    records.Add(new Record(id, actorId, transaction, value, detail, date, tag, categoryRecordId, photoRecordId));
+                }
+
+                listBoxChat.Items.Clear();
+                listBoxChat.Enabled = false;
+                richTextBoxChatBox.Enabled = false;
+                buttonSendChatBox.Enabled = false;
+
+                string userList = "";
+                string recordList = "";
+                string systemMessage = "";
+                if (user.Role == "user")
+                {
+
+                    userList = $"{user.Username} sebagai {user.Role} dan pengguna aplikasi aktif yang sekarang menggunakan aplikasi.";
+
+                    foreach (Record record in records)
+                    {
+                        recordList = $"{recordList} ({user.Username}: {record.Date} => {record.Transaction} Rp{record.ValueRecord} {record.Detail})";
+                    }
+                    systemMessage = "Anda adalah Aplikasi Pencatatan Keuangan Personal Keluarga. Sapa pengguna sebagai anak dengan nama " + user.Username +
+                                    "Berikan saran keuangan berdasarkan data keuangan berikut: " + recordList + ". Data tersebut mencakup nama pengguna, tanggal, jenis transaksi(debit untuk pemasukan, credit untuk pengeluaran), nominal transaksi dalam rupiah, dan detail transaksi." +
+                                    "Berikan saran dengan melihat detail transaksinya, frekuensi transaksi berdasarkan harinya, frekuensi transaksi berdasarkan bulan, statistik transaksi dari hari atau bulan sebelumnya, dsb. Saran bisa berupa rencana pengelolaan keuangan masa depan, hal-hal yang perlu diperhatikan berdasarkan pengeluaran yang sudah ada, dsb." +
+                                    "Pastikan menggunakan bahasa Indonesia dalam berinteraksi dengan pengguna. Sertakan salam pembuka: 'Selamat datang di Aplikasi Pencatatan Keuangan Personal. Apa yang bisa saya bantu?'";
+                }
+                else
+                {
+                    foreach (User i in users)
+                    {
+                        if (i.ID == user.ID)
+                        {
+                            userList = $"{userList} ({i.Username} sebagai {i.Role})";
+                        }
+                        else
+                        {
+                            userList = $"{userList} ({i.Username} sebagai {i.Role}. Ini adalah pengguna aktif yang sekarang menggunakan aplikasi)";
+                        }
+                    }
+                    foreach (Record record in records)
+                    {
+                        foreach (User i in users)
+                        {
+                            if (record.ActorId == i.ID)
+                            {
+                                recordList = $"{recordList} ({i.Username}: {record.Date} => {record.Transaction} Rp{record.ValueRecord} {record.Detail})";
+                            }
+                        }
+                    }
+                    /*systemMessage = "Anda adalah Aplikasi Pencatatan Keuangan Personal Keluarga, layanan untuk pendataan catatan keuangan dan rekomendasi rencana keuangan masa depan" +
+                    " Pertama-tama, Anda menyapa pengguna, yang mana pengguna itu adalah Admin, berupa orang tua dengan nama " + user.Username + "." +
+                    " Setelah itu, Anda akan diminta untuk memberikan saran keuangan berdasarkan data dari pengguna aplikasi. Pengguna aplikasi ini terdiri dari: " + userList + "." +
+                    " Anda akan diminta untuk memberikan saran keuangan berdasarkan data dari pengguna aplikasi. Data dari pengguna aplikasi ini terdiri dari: " + recordList + "." +
+                    " Data tersebut terdiri dari nama pengguna, tanggal, jenis transaksi (debit untuk pemasukan, credit untuk pengeluaran), nominal transaksi dalam rupiah, dan detail transaksi." +
+                    " Anda dapat memberikan saran dengan melihat detail transaksinya, frekuensi transaksi berdasarkan harinya, frekuensi transaksi berdasarkan bulan, statistik transaksi dari hari atau bulan sebelumnya, dsb." +
+                    " Saran yang Anda berikan bisa berupa rencana pengelolaan keuangan masa depan, hal-hal yang perlu diperhatikan berdasarkan pengeluaran yang sudah ada, dsb." +
+                    " Saran yang Anda berikan bisa untuk pengguna aplikasi yang mana saja, atau untuk semua pengguna aplikasi." +
+                    " Harap perhatikan bahwa akan ada dua tipe akun, yaitu Admin dan User. Admin adalah orang tua yang mengelola keuangan keluarga, sedangkan User adalah anggota keluarga yang mengelola keuangannya sendiri." +
+                    " Gunakan bahasa Indonesia dalam berinteraksi dengan pengguna aplikasi. Gunakan salam pembuka: Selamat datang di Aplikasi Pencatatan Keuangan Personal. Apa yang bisa saya bantu?"
+                    ;*/
+                    systemMessage = "Anda adalah Aplikasi Pencatatan Keuangan Personal Keluarga, sebuah layanan untuk pendataan catatan keuangan dan rekomendasi rencana keuangan masa depan. "
+                                    + "Pertama-tama, Anda menyapa pengguna, yang merupakan Admin, berupa orang tua dengan nama " + user.Username + ". "
+                                    + "Setelah itu, Anda akan diminta untuk memberikan saran keuangan berdasarkan data dari pengguna aplikasi. "
+                                    + "Pengguna aplikasi ini terdiri dari dua tipe akun, yaitu Admin dan User. "
+                                    + "Admin adalah orang tua yang mengelola keuangan keluarga, sedangkan User adalah anggota keluarga yang mengelola keuangannya sendiri. "
+                                    + "Data dari pengguna aplikasi ini terdiri dari: " + userList + ". "
+                                    + "Data tersebut mencakup nama pengguna, tanggal, jenis transaksi (debit untuk pemasukan, credit untuk pengeluaran), nominal transaksi dalam rupiah, dan detail transaksi. "
+                                    + "Anda dapat memberikan saran dengan melihat detail transaksinya, frekuensi transaksi berdasarkan harinya, frekuensi transaksi berdasarkan bulan, statistik transaksi dari hari atau bulan sebelumnya, dsb. "
+                                    + "Saran yang Anda berikan bisa berupa rencana pengelolaan keuangan masa depan, hal-hal yang perlu diperhatikan berdasarkan pengeluaran yang sudah ada, dsb. "
+                                    + "Saran yang Anda berikan bisa untuk pengguna aplikasi yang mana saja, atau untuk semua pengguna aplikasi. "
+                                    + "Harap perhatikan bahwa Admin dan User memiliki peran dan tanggung jawab keuangan yang berbeda. "
+                                    + "Gunakan bahasa Indonesia dalam berinteraksi dengan pengguna aplikasi. "
+                                    + "Gunakan salam pembuka: Selamat datang di Aplikasi Pencatatan Keuangan Personal. "
+                                    + "Apa yang bisa saya bantu?";
+                }
+
+                chat.AppendSystemMessage(systemMessage);
+                chat.AppendUserInput("Hello!");
+                string response = await chat.GetResponseFromChatbotAsync();
+                AddMessage("Chatbot", response);
+
+                listBoxChat.Enabled = true;
+                richTextBoxChatBox.Enabled = true;
+                buttonSendChatBox.Enabled = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred while making the request: " + ex.Message);
+            }
+            ChangeProgressBarState(false);
+        }
+
+        private void AddMessage(string sender, string message)
+        {
+            string formattedMessage = $"{sender}: {message}";
+            listBoxChat.Items.Add(formattedMessage);
+        }
+
+        private async void buttonSendChatBox_Click(object sender, EventArgs e)
+        {
+            ChangeProgressBarState(true);
+            richTextBoxChatBox.Enabled = false;
+            buttonSendChatBox.Enabled = false;
+
+            AddMessage(user.Username, richTextBoxChatBox.Text);
+            chat.AppendUserInput(richTextBoxChatBox.Text);
+            string response = await chat.GetResponseFromChatbotAsync();
+            AddMessage("Chatbot", response);
+
+            richTextBoxChatBox.Text = String.Empty;
+            richTextBoxChatBox.Enabled = true;
+            buttonSendChatBox.Enabled = true;
+            ChangeProgressBarState(false);
+        }
+
+        private void richTextBoxChatBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                buttonSendChatBox_Click(sender, e);
             }
         }
     }
