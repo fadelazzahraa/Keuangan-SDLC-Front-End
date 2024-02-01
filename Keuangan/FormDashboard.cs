@@ -183,13 +183,35 @@ namespace Keuangan
 
                 }
 
+
+                foreach (var record in records)
+                {
+
+                    string dayOfWeek = record.Date.DayOfWeek.ToString();
+                    string month = record.Date.ToString("MMMM", CultureInfo.InvariantCulture);
+
+                    if (record.Transaction == "debit")
+                    {
+                        debitByDay[dayOfWeek] += record.ValueRecord;
+
+                        debitByMonth[month] += record.ValueRecord;
+                    }
+                    else if (record.Transaction == "credit")
+                    {
+                        creditByDay[dayOfWeek] += record.ValueRecord;
+
+                        creditByMonth[month] += record.ValueRecord;
+                    }
+
+                }
+
                 void SetChart(Chart chart, Dictionary<string, float> data, string title)
                 {
                     chart.Series[title].Points.Clear();
-                    foreach (var entry in data)
-                    {
-                        chart.Series[title].Points.AddXY(entry.Key, entry.Value);
-                    }
+                    chart.Series[title].Points.DataBindXY(data.Keys, data.Values);
+
+                    chart.ChartAreas[0].AxisX.Interval = 1; // Set the interval as needed
+                    chart.ChartAreas[0].AxisX.LabelStyle.Angle = -45; // Rotate labels if needed
                 }
 
 
@@ -254,7 +276,7 @@ namespace Keuangan
         {
             if (user.Role == "user")
             {
-                labelStatsUser.Text = "                            Showing stats for your account";
+                labelStatsUser.Text = "Showing stats for your account";
 
                 comboBoxStatsUser.Enabled = false;
                 comboBoxStatsUser.Visible = false;
@@ -266,6 +288,7 @@ namespace Keuangan
                 radioButtonStatsAllUsers.Enabled = false;
                 radioButtonStatsAllUsers.Visible = false;
 
+                labelStatsUser.TextAlign = ContentAlignment.TopCenter;
                 labelStatisticYourAccount.Visible = true;
 
                 users = null;

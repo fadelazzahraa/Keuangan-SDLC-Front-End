@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 50D);
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
@@ -70,17 +72,22 @@
             label10 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             tabPage2 = new System.Windows.Forms.TabPage();
+            tabControl2 = new System.Windows.Forms.TabControl();
+            tabPageDebitDay = new System.Windows.Forms.TabPage();
+            label19 = new System.Windows.Forms.Label();
+            chartDebitDays = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            tabPageDebitMonth = new System.Windows.Forms.TabPage();
+            label18 = new System.Windows.Forms.Label();
+            chartDebitMonths = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            tabPageCreditDay = new System.Windows.Forms.TabPage();
+            label20 = new System.Windows.Forms.Label();
+            chartCreditDays = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            tabPageCreditMonth = new System.Windows.Forms.TabPage();
+            label17 = new System.Windows.Forms.Label();
+            chartCreditMonths = new System.Windows.Forms.DataVisualization.Charting.Chart();
             radioButtonStatsAllUsers = new System.Windows.Forms.RadioButton();
             radioButtonStatsOfUser = new System.Windows.Forms.RadioButton();
             comboBoxStatisticUsers = new System.Windows.Forms.ComboBox();
-            label20 = new System.Windows.Forms.Label();
-            label18 = new System.Windows.Forms.Label();
-            label19 = new System.Windows.Forms.Label();
-            chartDebitMonths = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            chartDebitDays = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            label17 = new System.Windows.Forms.Label();
-            chartCreditMonths = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            chartCreditDays = new System.Windows.Forms.DataVisualization.Charting.Chart();
             labelStatisticYourAccount = new System.Windows.Forms.Label();
             tabPage3 = new System.Windows.Forms.TabPage();
             label14 = new System.Windows.Forms.Label();
@@ -100,10 +107,15 @@
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)chartDebitMonths).BeginInit();
+            tabControl2.SuspendLayout();
+            tabPageDebitDay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartDebitDays).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)chartCreditMonths).BeginInit();
+            tabPageDebitMonth.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartDebitMonths).BeginInit();
+            tabPageCreditDay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartCreditDays).BeginInit();
+            tabPageCreditMonth.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartCreditMonths).BeginInit();
             tabPage3.SuspendLayout();
             SuspendLayout();
             // 
@@ -236,12 +248,12 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(labelStatsUser);
             tabPage1.Controls.Add(comboBoxStatsUser);
             tabPage1.Controls.Add(panel4);
             tabPage1.Controls.Add(panel3);
             tabPage1.Controls.Add(panel2);
             tabPage1.Controls.Add(panel1);
+            tabPage1.Controls.Add(labelStatsUser);
             tabPage1.Location = new System.Drawing.Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -252,10 +264,10 @@
             // 
             // labelStatsUser
             // 
-            labelStatsUser.AutoSize = true;
+            labelStatsUser.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             labelStatsUser.Location = new System.Drawing.Point(231, 17);
             labelStatsUser.Name = "labelStatsUser";
-            labelStatsUser.Size = new System.Drawing.Size(158, 15);
+            labelStatsUser.Size = new System.Drawing.Size(305, 15);
             labelStatsUser.TabIndex = 40;
             labelStatsUser.Text = "Showing stats for account of";
             // 
@@ -492,17 +504,10 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(tabControl2);
             tabPage2.Controls.Add(radioButtonStatsAllUsers);
             tabPage2.Controls.Add(radioButtonStatsOfUser);
             tabPage2.Controls.Add(comboBoxStatisticUsers);
-            tabPage2.Controls.Add(label20);
-            tabPage2.Controls.Add(label18);
-            tabPage2.Controls.Add(label19);
-            tabPage2.Controls.Add(chartDebitMonths);
-            tabPage2.Controls.Add(chartDebitDays);
-            tabPage2.Controls.Add(label17);
-            tabPage2.Controls.Add(chartCreditMonths);
-            tabPage2.Controls.Add(chartCreditDays);
             tabPage2.Controls.Add(labelStatisticYourAccount);
             tabPage2.Location = new System.Drawing.Point(4, 24);
             tabPage2.Name = "tabPage2";
@@ -512,9 +517,175 @@
             tabPage2.Text = "Statistics";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // tabControl2
+            // 
+            tabControl2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tabControl2.Controls.Add(tabPageDebitDay);
+            tabControl2.Controls.Add(tabPageDebitMonth);
+            tabControl2.Controls.Add(tabPageCreditDay);
+            tabControl2.Controls.Add(tabPageCreditMonth);
+            tabControl2.Location = new System.Drawing.Point(6, 42);
+            tabControl2.Name = "tabControl2";
+            tabControl2.SelectedIndex = 0;
+            tabControl2.Size = new System.Drawing.Size(740, 395);
+            tabControl2.TabIndex = 46;
+            // 
+            // tabPageDebitDay
+            // 
+            tabPageDebitDay.Controls.Add(label19);
+            tabPageDebitDay.Controls.Add(chartDebitDays);
+            tabPageDebitDay.Location = new System.Drawing.Point(4, 24);
+            tabPageDebitDay.Name = "tabPageDebitDay";
+            tabPageDebitDay.Padding = new System.Windows.Forms.Padding(3);
+            tabPageDebitDay.Size = new System.Drawing.Size(732, 367);
+            tabPageDebitDay.TabIndex = 0;
+            tabPageDebitDay.Text = "Debit per days";
+            tabPageDebitDay.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            label19.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            label19.Location = new System.Drawing.Point(307, 8);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(140, 15);
+            label19.TabIndex = 10;
+            label19.Text = "Debit stats based on days";
+            label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // chartDebitDays
+            // 
+            chartDebitDays.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            chartArea1.Name = "ChartArea1";
+            chartDebitDays.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            chartDebitDays.Legends.Add(legend1);
+            chartDebitDays.Location = new System.Drawing.Point(6, 26);
+            chartDebitDays.Name = "chartDebitDays";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Debit by Day";
+            series1.Points.Add(dataPoint1);
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            chartDebitDays.Series.Add(series1);
+            chartDebitDays.Size = new System.Drawing.Size(720, 335);
+            chartDebitDays.TabIndex = 9;
+            chartDebitDays.Text = "chart4";
+            // 
+            // tabPageDebitMonth
+            // 
+            tabPageDebitMonth.Controls.Add(label18);
+            tabPageDebitMonth.Controls.Add(chartDebitMonths);
+            tabPageDebitMonth.Location = new System.Drawing.Point(4, 24);
+            tabPageDebitMonth.Name = "tabPageDebitMonth";
+            tabPageDebitMonth.Size = new System.Drawing.Size(732, 367);
+            tabPageDebitMonth.TabIndex = 2;
+            tabPageDebitMonth.Text = "Debit per months";
+            tabPageDebitMonth.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            label18.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            label18.Location = new System.Drawing.Point(317, 8);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(126, 15);
+            label18.TabIndex = 11;
+            label18.Text = "Debit stats per months\r\n";
+            label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // chartDebitMonths
+            // 
+            chartDebitMonths.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            chartArea2.Name = "ChartArea1";
+            chartDebitMonths.ChartAreas.Add(chartArea2);
+            chartDebitMonths.Location = new System.Drawing.Point(5, 26);
+            chartDebitMonths.Name = "chartDebitMonths";
+            chartDebitMonths.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Name = "Debit by Month";
+            chartDebitMonths.Series.Add(series2);
+            chartDebitMonths.Size = new System.Drawing.Size(720, 335);
+            chartDebitMonths.TabIndex = 10;
+            chartDebitMonths.Text = "chart3";
+            // 
+            // tabPageCreditDay
+            // 
+            tabPageCreditDay.Controls.Add(label20);
+            tabPageCreditDay.Controls.Add(chartCreditDays);
+            tabPageCreditDay.Location = new System.Drawing.Point(4, 24);
+            tabPageCreditDay.Name = "tabPageCreditDay";
+            tabPageCreditDay.Padding = new System.Windows.Forms.Padding(3);
+            tabPageCreditDay.Size = new System.Drawing.Size(732, 367);
+            tabPageCreditDay.TabIndex = 1;
+            tabPageCreditDay.Text = "Credit per days";
+            tabPageCreditDay.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            label20.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            label20.Location = new System.Drawing.Point(307, 8);
+            label20.Name = "label20";
+            label20.Size = new System.Drawing.Size(144, 15);
+            label20.TabIndex = 12;
+            label20.Text = "Credit stats based on days";
+            label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // chartCreditDays
+            // 
+            chartCreditDays.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            chartArea3.Name = "ChartArea1";
+            chartCreditDays.ChartAreas.Add(chartArea3);
+            chartCreditDays.Location = new System.Drawing.Point(6, 26);
+            chartCreditDays.Name = "chartCreditDays";
+            series3.ChartArea = "ChartArea1";
+            series3.Name = "Credit by Day";
+            chartCreditDays.Series.Add(series3);
+            chartCreditDays.Size = new System.Drawing.Size(720, 335);
+            chartCreditDays.TabIndex = 11;
+            chartCreditDays.Text = "chart1";
+            // 
+            // tabPageCreditMonth
+            // 
+            tabPageCreditMonth.Controls.Add(label17);
+            tabPageCreditMonth.Controls.Add(chartCreditMonths);
+            tabPageCreditMonth.Location = new System.Drawing.Point(4, 24);
+            tabPageCreditMonth.Name = "tabPageCreditMonth";
+            tabPageCreditMonth.Size = new System.Drawing.Size(732, 367);
+            tabPageCreditMonth.TabIndex = 3;
+            tabPageCreditMonth.Text = "Credit per months";
+            tabPageCreditMonth.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            label17.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            label17.Location = new System.Drawing.Point(316, 8);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(130, 15);
+            label17.TabIndex = 7;
+            label17.Text = "Credit stats per months\r\n";
+            label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // chartCreditMonths
+            // 
+            chartCreditMonths.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            chartArea4.Name = "ChartArea1";
+            chartCreditMonths.ChartAreas.Add(chartArea4);
+            chartCreditMonths.Location = new System.Drawing.Point(7, 26);
+            chartCreditMonths.Name = "chartCreditMonths";
+            chartCreditMonths.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Name = "Credit by Month";
+            chartCreditMonths.Series.Add(series4);
+            chartCreditMonths.Size = new System.Drawing.Size(720, 335);
+            chartCreditMonths.TabIndex = 6;
+            chartCreditMonths.Text = "chart2";
+            // 
             // radioButtonStatsAllUsers
             // 
-            radioButtonStatsAllUsers.AutoSize = true;
+            radioButtonStatsAllUsers.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             radioButtonStatsAllUsers.Location = new System.Drawing.Point(461, 11);
             radioButtonStatsAllUsers.Name = "radioButtonStatsAllUsers";
             radioButtonStatsAllUsers.Size = new System.Drawing.Size(203, 19);
@@ -525,7 +696,6 @@
             // 
             // radioButtonStatsOfUser
             // 
-            radioButtonStatsOfUser.AutoSize = true;
             radioButtonStatsOfUser.Checked = true;
             radioButtonStatsOfUser.Location = new System.Drawing.Point(100, 11);
             radioButtonStatsOfUser.Name = "radioButtonStatsOfUser";
@@ -538,6 +708,7 @@
             // 
             // comboBoxStatisticUsers
             // 
+            comboBoxStatisticUsers.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             comboBoxStatisticUsers.FormattingEnabled = true;
             comboBoxStatisticUsers.Location = new System.Drawing.Point(303, 10);
             comboBoxStatisticUsers.Name = "comboBoxStatisticUsers";
@@ -545,106 +716,16 @@
             comboBoxStatisticUsers.TabIndex = 41;
             comboBoxStatisticUsers.SelectedIndexChanged += comboBoxStatisticUsers_SelectedIndexChanged;
             // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Location = new System.Drawing.Point(7, 243);
-            label20.Name = "label20";
-            label20.Size = new System.Drawing.Size(144, 15);
-            label20.TabIndex = 10;
-            label20.Text = "Credit stats based on days";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Location = new System.Drawing.Point(381, 42);
-            label18.Name = "label18";
-            label18.Size = new System.Drawing.Size(126, 15);
-            label18.TabIndex = 9;
-            label18.Text = "Debit stats per months\r\n";
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Location = new System.Drawing.Point(7, 42);
-            label19.Name = "label19";
-            label19.Size = new System.Drawing.Size(140, 15);
-            label19.TabIndex = 8;
-            label19.Text = "Debit stats based on days";
-            // 
-            // chartDebitMonths
-            // 
-            chartArea1.Name = "ChartArea1";
-            chartDebitMonths.ChartAreas.Add(chartArea1);
-            chartDebitMonths.Location = new System.Drawing.Point(379, 60);
-            chartDebitMonths.Name = "chartDebitMonths";
-            chartDebitMonths.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Name = "Debit by Month";
-            chartDebitMonths.Series.Add(series1);
-            chartDebitMonths.Size = new System.Drawing.Size(367, 176);
-            chartDebitMonths.TabIndex = 7;
-            chartDebitMonths.Text = "chart3";
-            // 
-            // chartDebitDays
-            // 
-            chartArea2.Name = "ChartArea1";
-            chartDebitDays.ChartAreas.Add(chartArea2);
-            chartDebitDays.Location = new System.Drawing.Point(7, 60);
-            chartDebitDays.Name = "chartDebitDays";
-            series2.ChartArea = "ChartArea1";
-            series2.Name = "Debit by Day";
-            chartDebitDays.Series.Add(series2);
-            chartDebitDays.Size = new System.Drawing.Size(367, 176);
-            chartDebitDays.TabIndex = 6;
-            chartDebitDays.Text = "chart4";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Location = new System.Drawing.Point(381, 243);
-            label17.Name = "label17";
-            label17.Size = new System.Drawing.Size(130, 15);
-            label17.TabIndex = 5;
-            label17.Text = "Credit stats per months\r\n";
-            // 
-            // chartCreditMonths
-            // 
-            chartArea3.Name = "ChartArea1";
-            chartCreditMonths.ChartAreas.Add(chartArea3);
-            chartCreditMonths.Location = new System.Drawing.Point(379, 261);
-            chartCreditMonths.Name = "chartCreditMonths";
-            chartCreditMonths.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Name = "Credit by Month";
-            chartCreditMonths.Series.Add(series3);
-            chartCreditMonths.Size = new System.Drawing.Size(367, 176);
-            chartCreditMonths.TabIndex = 3;
-            chartCreditMonths.Text = "chart2";
-            // 
-            // chartCreditDays
-            // 
-            chartArea4.Name = "ChartArea1";
-            chartCreditDays.ChartAreas.Add(chartArea4);
-            chartCreditDays.Location = new System.Drawing.Point(7, 261);
-            chartCreditDays.Name = "chartCreditDays";
-            series4.ChartArea = "ChartArea1";
-            series4.Name = "Credit by Day";
-            chartCreditDays.Series.Add(series4);
-            chartCreditDays.Size = new System.Drawing.Size(367, 176);
-            chartCreditDays.TabIndex = 2;
-            chartCreditDays.Text = "chart1";
-            // 
             // labelStatisticYourAccount
             // 
-            labelStatisticYourAccount.AutoSize = true;
+            labelStatisticYourAccount.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            labelStatisticYourAccount.BackColor = System.Drawing.Color.Transparent;
             labelStatisticYourAccount.Location = new System.Drawing.Point(294, 13);
             labelStatisticYourAccount.Name = "labelStatisticYourAccount";
             labelStatisticYourAccount.Size = new System.Drawing.Size(192, 15);
             labelStatisticYourAccount.TabIndex = 45;
             labelStatisticYourAccount.Text = "Showing statistics for your account";
+            labelStatisticYourAccount.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             labelStatisticYourAccount.Visible = false;
             // 
             // tabPage3
@@ -682,9 +763,8 @@
             Controls.Add(pictureBoxLogout);
             Controls.Add(pictureBoxUploadBill);
             Controls.Add(pictureBoxCashFlow);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Margin = new System.Windows.Forms.Padding(2);
-            MaximizeBox = false;
+            MinimumSize = new System.Drawing.Size(800, 600);
             Name = "FormDashboard";
             Text = "CashFlow Tracker";
             Load += FormDashboard_Load;
@@ -696,7 +776,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxCashFlow).EndInit();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
             panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             panel3.ResumeLayout(false);
@@ -706,11 +785,15 @@
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)chartDebitMonths).EndInit();
+            tabControl2.ResumeLayout(false);
+            tabPageDebitDay.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chartDebitDays).EndInit();
-            ((System.ComponentModel.ISupportInitialize)chartCreditMonths).EndInit();
+            tabPageDebitMonth.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartDebitMonths).EndInit();
+            tabPageCreditDay.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chartCreditDays).EndInit();
+            tabPageCreditMonth.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartCreditMonths).EndInit();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             ResumeLayout(false);
@@ -754,18 +837,23 @@
         private System.Windows.Forms.Label labelStatsUser;
         private System.Windows.Forms.ComboBox comboBoxStatsUser;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartCreditMonths;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartCreditDays;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartDebitMonths;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartDebitDays;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox comboBoxStatisticUsers;
         private System.Windows.Forms.RadioButton radioButtonStatsOfUser;
         private System.Windows.Forms.RadioButton radioButtonStatsAllUsers;
         private System.Windows.Forms.Label labelStatisticYourAccount;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPageDebitDay;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartDebitDays;
+        private System.Windows.Forms.TabPage tabPageDebitMonth;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartDebitMonths;
+        private System.Windows.Forms.TabPage tabPageCreditDay;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartCreditDays;
+        private System.Windows.Forms.TabPage tabPageCreditMonth;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartCreditMonths;
     }
 }

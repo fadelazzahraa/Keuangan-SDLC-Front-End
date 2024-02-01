@@ -336,7 +336,7 @@ namespace Keuangan
 
                     Dictionary<string, string> data = new Dictionary<string, string>
                     {
-                        { "actorId", users[selectedUser].ID.ToString() },
+                        { "actorId", user.Role == "user" ? user.ID.ToString() : users[selectedUser].ID.ToString() },
                         { "transaction", transaction },
                         { "value", value.ToString() },
                         { "detail", detail },
@@ -353,7 +353,7 @@ namespace Keuangan
                     Dictionary<string, object> responseDataDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseData);
 
                     MessageBox.Show(responseDataDictionary["message"].ToString());
-                    LoadRecordData(users[selectedUser].ID);
+                    LoadRecordData(user.Role == "user" ? user.ID : users[selectedUser].ID);
                 }
                 catch (Exception ex)
                 {
@@ -386,7 +386,7 @@ namespace Keuangan
 
                     Dictionary<string, string> data = new Dictionary<string, string>
                     {
-                        { "actorId", users[selectedUser].ID.ToString() },
+                        { "actorId", user.Role == "user" ? user.ID.ToString() : users[selectedUser].ID.ToString()  },
                         { "transaction", transaction },
                         { "value", value.ToString() },
                         { "detail", detail },
@@ -403,7 +403,7 @@ namespace Keuangan
                     Dictionary<string, object> responseDataDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseData);
 
                     MessageBox.Show(responseDataDictionary["message"].ToString());
-                    LoadRecordData(users[selectedUser].ID);
+                    LoadRecordData(user.Role == "user" ? user.ID : users[selectedUser].ID);
                 }
                 catch (Exception ex)
                 {
@@ -435,7 +435,7 @@ namespace Keuangan
                     Dictionary<string, object> responseDataDictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseData);
 
                     MessageBox.Show(responseDataDictionary["message"].ToString());
-                    LoadRecordData(users[selectedUser].ID);
+                    LoadRecordData(user.Role == "user" ? user.ID : users[selectedUser].ID);
                 }
                 catch (Exception ex)
                 {
